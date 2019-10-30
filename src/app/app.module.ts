@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './parcials/footer/footer.component';
 import { HomeComponent } from './parcials/home/home.component';
 import { HomeAccountComponent } from './account/home-account/home-account.component'
+import { FirebaseService } from './services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { HomeAccountComponent } from './account/home-account/home-account.compon
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
