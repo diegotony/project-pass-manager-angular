@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './parcials/navbar/navbar.component';
 
 import {AngularFireModule} from '@angular/fire';
-import {AngularFirestoreModule  } from "@angular/fire/firestore";
 import {environment} from './../environments/environment';
 import { NewAccountComponent } from './account/new-account/new-account.component';
 import { EditAccountComponent } from './account/edit-account/edit-account.component';
@@ -16,8 +15,12 @@ import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './parcials/footer/footer.component';
 import { HomeComponent } from './parcials/home/home.component';
 import { HomeAccountComponent } from './account/home-account/home-account.component'
-import { FirebaseService } from './services/firebase.service';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
+import { AngularFirestore } from '@angular/fire/firestore';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,9 +38,14 @@ import { FirebaseService } from './services/firebase.service';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    BrowserAnimationsModule,
+    AlertModule.forRoot(),
+    ModalModule.forRoot(),
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [FirebaseService],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

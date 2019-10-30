@@ -1,23 +1,22 @@
 <ul class="list-group">
-  <li class="list-group-item ">
-    Cras justo odio
+
+  <li class="list-group-item" *ngFor="let item of accounts | async" >
+      {{item.email}}
     <button
       type="button"
       class="btn btn-warning"
       data-toggle="modal"
       data-target="#exampleModal"
     >
- Edit
+      Edit
     </button>
     <button
-    type="button"
-    class="btn btn-danger"
-    data-toggle="modal"
-    data-target="#exampleModal"
-  >
-Delete
-  </button>
+      type="button"
+      class="btn btn-danger"
+      data-toggle="modal"
+      data-target="#exampleModal"
+    >
+      Delete
+    </button>
   </li>
 </ul>
-
-

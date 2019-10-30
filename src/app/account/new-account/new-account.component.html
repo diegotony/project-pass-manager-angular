@@ -1,24 +1,45 @@
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Agregar Cuenta
-      </button>
-      
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
+<button type="button" class="btn btn-primary" (click)="openModal(template)">
+  Add Account
+</button>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Account</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form
+      [formGroup]="checkoutForm"
+      (ngSubmit)="saveAccount(checkoutForm.value)"
+    >
+    <div>
+        <label for="provider">
+          Provider
+        </label>
+        <input id="provider" type="text" formControlName="provider">
       </div>
+      <div>
+        <label for="email">
+          Email
+        </label>
+        <input id="email" type="text" formControlName="email" />
+      </div>
+
+      <div>
+          <label for="password">
+            Password
+          </label>
+          <input id="password" type="text" formControlName="password">
+        </div>
+
+      <button class="button" type="submit">Purchase</button>
+    </form>
+  </div>
+</ng-template>
