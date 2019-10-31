@@ -35,6 +35,7 @@ export class NewAccountComponent {
     this.db
       .collection("accounts")
       .add({
+        
         email: value.provider,
         password: value.password,
         provider: value.provider,
