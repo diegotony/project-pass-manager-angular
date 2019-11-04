@@ -62,7 +62,6 @@ export class AuthService {
 
   test() {
     console.log(this.data);
-    
     return this.data;
   }
   private updateUserData(user) {
