@@ -1,10 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './parcials/navbar/navbar.component';
-
 import {AngularFireModule} from '@angular/fire';
 import {environment} from './../environments/environment';
 import { NewAccountComponent } from './account/new-account/new-account.component';
@@ -22,6 +20,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth'
+import { ConstantsService } from './services/constants.service';
+import { DataPipe } from './pipes/data.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { AngularFireAuth } from '@angular/fire/auth'
     LoginComponent,
     FooterComponent,
     HomeComponent,
-    HomeAccountComponent
+    HomeAccountComponent,
+    DataPipe,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,7 @@ import { AngularFireAuth } from '@angular/fire/auth'
     FormsModule,
     HttpClientModule
   ],
-  providers: [AngularFirestore, AngularFireAuth],
+  providers: [AngularFirestore, AngularFireAuth, ConstantsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
