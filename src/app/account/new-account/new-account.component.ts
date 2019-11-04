@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   templateUrl: "./new-account.component.html",
   styleUrls: ["./new-account.component.scss"]
 })
-export class NewAccountComponent {
+export class NewAccountComponent implements OnInit {
   modalRef: BsModalRef;
   items;
   checkoutForm;
@@ -32,6 +32,17 @@ export class NewAccountComponent {
     // console.log(this.userData.id)
   }
   
+  ngOnInit() {
+
+    if(this.authService.test()){
+      this.userData = this.authService.test()
+      localStorage.setItem("id", this.userData.id)
+    }else{
+
+    }
+    
+  }
+
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

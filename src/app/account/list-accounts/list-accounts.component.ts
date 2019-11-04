@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AES, enc } from "crypto-ts";
 import { AngularFirestore } from "@angular/fire/firestore";
 import "rxjs/add/operator/map";
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthService } from "src/app/services/auth/auth.service";
 
 @Component({
   selector: "app-list-accounts",
@@ -23,28 +23,29 @@ export class ListAccountsComponent implements OnInit {
     private db: AngularFirestore,
     private modalService: BsModalService,
     private formBuilder: FormBuilder,
-    private authService : AuthService
-    
+    private authService: AuthService
   ) {
-
     this.checkoutForm = this.formBuilder.group({
       provider: "",
       email: "",
       password: ""
     });
-
   }
   ngOnInit() {
-    this.userData= this.authService.test();
-    localStorage.setItem("id", this.userData.id)
-    console.log(localStorage.getItem("id"))
+    if (this.authService.test()) {
+      this.userData = this.authService.test();
+      localStorage.setItem("id", this.userData.id);
+    } else {
+    }
     this.getAccounts();
   }
 
   getAccounts() {
     this.authService.test();
     this.accounts = this.db
-      .collection("accounts", ref =>  ref.where('users_email_id','==',localStorage.getItem('id')))
+      .collection("accounts", ref =>
+        ref.where("users_email_id", "==", localStorage.getItem("id"))
+      )
       .snapshotChanges()
       .map(actions => {
         return actions.map(a => {
@@ -52,8 +53,7 @@ export class ListAccountsComponent implements OnInit {
           const id = a.payload.doc.id;
           return { id, ...data };
         });
-      }); 
-       
+      });
   }
   deleteAccount(value) {
     this.db
@@ -69,13 +69,13 @@ export class ListAccountsComponent implements OnInit {
   updateAccount(value, id) {
     this.db
       .collection("accounts")
-      .doc(id).update({
+      .doc(id)
+      .update({
         email: AES.encrypt(value.email, this.key).toString(),
         password: AES.encrypt(value.password, this.key).toString(),
         provider: value.provider,
-        users_email_id: localStorage.getItem('id')
+        users_email_id: localStorage.getItem("id")
       });
-      this.checkoutForm.reset();
-
+    this.checkoutForm.reset();
   }
 }
