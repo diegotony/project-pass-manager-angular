@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-
+  data: any;
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { }
 
 
@@ -60,13 +60,18 @@ export class AuthService {
     return this.afAuth.auth.signOut();
   }
 
+  test() {
+    console.log(this.data);
+    
+    return this.data;
+  }
   private updateUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const data = {
+    this.data = {
       id: user.uid,
       email: user.email
-    }
-    return userRef.set(data, { merge: true })
+    };
+    return userRef.set(this.data, { merge: true })
   }
 
 }

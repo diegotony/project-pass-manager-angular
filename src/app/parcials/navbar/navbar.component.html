@@ -9,12 +9,16 @@
           <a class="nav-link" routerLink="/home" >Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/login" *ngIf="!isLogged">Login</a>
+          <a class="nav-link" routerLink="/login" *ngIf="!isLogged">Login</a> 
         </li>
         <li class="nav-item active">
           <a class="nav-link" routerLink="/login" (click)="onlogout()" *ngIf="isLogged">Salir</a>
         </li>
+        <li class="nav-item active">
+          <a  class="nav-link" (click)="test1()">TESTs</a>
+        </li>
+       
         <!-- LOGGED: {{isLogged}} -->
-      </ul>
+      </ul> 
     </div>
   </nav>    
