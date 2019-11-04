@@ -1,11 +1,63 @@
 <ul class="list-group">
 
   <li class="list-group-item" *ngFor="let item of accounts | async">
-    {{item | json}}
+    {{item.provider}}
 
-    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+    <!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+      Edit
+    </button> -->
+
+
+    <button type="button" class="btn btn-warning" (click)="openModal(template)">
       Edit
     </button>
+    
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Add Account</h4>
+        <button
+          type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="modalRef.hide()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form
+          [formGroup]="checkoutForm"
+          (ngSubmit)="updateAccount(checkoutForm.value, item.id)"
+        >
+          <div>
+            <label for="provider">
+              Provider
+            </label>
+           
+
+            <input id="provider" value=" {{item.provider}}"  type="text" formControlName="provider" required />
+          </div>
+          <div>
+            <label for="email">
+              Email
+            </label>
+            <input id="email" value=" {{item.email | data}}"type="text" formControlName="email" required />
+          </div>
+    
+          <div>
+            <label for="password">
+              Password
+            </label>
+            <input id="password" value=" {{item.password | data}}"type="text" formControlName="password" required />
+          </div>
+    
+          <button class="button" type="submit">Agregar</button>
+        </form>
+      </div>
+    </ng-template>
+    
+
+
     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
       (click)="deleteAccount(item.id)">
       Delete
