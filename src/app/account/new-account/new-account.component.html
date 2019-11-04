@@ -19,27 +19,27 @@
       [formGroup]="checkoutForm"
       (ngSubmit)="saveAccount(checkoutForm.value)"
     >
-    <div>
+      <div>
         <label for="provider">
           Provider
         </label>
-        <input id="provider" type="text" formControlName="provider">
+        <input id="provider" type="text" formControlName="provider" required />
       </div>
       <div>
         <label for="email">
           Email
         </label>
-        <input id="email" type="text" formControlName="email" />
+        <input id="email" type="text" formControlName="email" required />
       </div>
 
       <div>
-          <label for="password">
-            Password
-          </label>
-          <input id="password" type="text" formControlName="password">
-        </div>
+        <label for="password">
+          Password
+        </label>
+        <input id="password" type="text" formControlName="password" required />
+      </div>
 
-      <button class="button" type="submit">Purchase</button>
+      <button class="button" type="submit">Agregar</button>
     </form>
   </div>
 </ng-template>
