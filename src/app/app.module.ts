@@ -6,7 +6,6 @@ import { NavbarComponent } from './parcials/navbar/navbar.component';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from './../environments/environment';
 import { NewAccountComponent } from './account/new-account/new-account.component';
-import { EditAccountComponent } from './account/edit-account/edit-account.component';
 import { ListAccountsComponent } from './account/list-accounts/list-accounts.component';
 import { NewUserComponent } from './user/new-user/new-user.component';
 import { LoginComponent } from './login/login.component';
@@ -28,7 +27,6 @@ import { DataPipe } from './pipes/data.pipe';
     AppComponent,
     NavbarComponent,
     NewAccountComponent,
-    EditAccountComponent,
     ListAccountsComponent,
     NewUserComponent,
     LoginComponent,

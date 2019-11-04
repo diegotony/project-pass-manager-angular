@@ -29,7 +29,7 @@ export class NewAccountComponent {
       password: ""
     });
     this.userData= this.authService.test();
-    console.log(this.userData.id)
+    // console.log(this.userData.id)
   }
   
 
@@ -46,14 +46,10 @@ export class NewAccountComponent {
         email: AES.encrypt(value.email, this.key).toString(),
         password: AES.encrypt(value.password, this.key).toString(),
         provider: value.provider,
-        users_email_id: this.userData.id
+        users_email_id: localStorage.getItem('id')
       });
       this.checkoutForm.reset();
 
-    // let encryptedMessage = AES.encrypt("message", this.key).toString();
-    // console.warn(encryptedMessage);
-    // var bytes = AES.decrypt(encryptedMessage, this.key);
-    // var plaintext = bytes.toString(enc.Utf8);
-    // console.warn(plaintext)
+
   }
 }

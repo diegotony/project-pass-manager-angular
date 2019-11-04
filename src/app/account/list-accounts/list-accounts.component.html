@@ -35,20 +35,20 @@
             </label>
            
 
-            <input id="provider" value=" {{item.provider}}"  type="text" formControlName="provider" required />
+            <input id="provider" type="text"  value=" {{item.provider}}"  formControlName="provider" required />
           </div>
           <div>
             <label for="email">
               Email
             </label>
-            <input id="email" value=" {{item.email | data}}"type="text" formControlName="email" required />
+            <input id="email"  type="email" value="{{item.email | data}}"type="text" formControlName="email" required />
           </div>
     
           <div>
             <label for="password">
               Password
             </label>
-            <input id="password" value=" {{item.password | data}}"type="text" formControlName="password" required />
+            <input id="password" type="text" value=" {{item.password | data}}"type="text" formControlName="password" required />
           </div>
     
           <button class="button" type="submit">Agregar</button>

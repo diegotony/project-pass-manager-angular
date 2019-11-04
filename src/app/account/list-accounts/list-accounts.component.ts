@@ -36,14 +36,15 @@ export class ListAccountsComponent implements OnInit {
   }
   ngOnInit() {
     this.userData= this.authService.test();
-    console.log(this.userData.id)
+    localStorage.setItem("id", this.userData.id)
+    console.log(localStorage.getItem("id"))
     this.getAccounts();
   }
 
   getAccounts() {
     this.authService.test();
     this.accounts = this.db
-      .collection("accounts", ref =>  ref.where('users_email_id','==',this.userData.id))
+      .collection("accounts", ref =>  ref.where('users_email_id','==',localStorage.getItem('id')))
       .snapshotChanges()
       .map(actions => {
         return actions.map(a => {
@@ -72,7 +73,7 @@ export class ListAccountsComponent implements OnInit {
         email: AES.encrypt(value.email, this.key).toString(),
         password: AES.encrypt(value.password, this.key).toString(),
         provider: value.provider,
-        users_email_id: this.userData.id
+        users_email_id: localStorage.getItem('id')
       });
       this.checkoutForm.reset();
 
