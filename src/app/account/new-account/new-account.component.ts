@@ -3,6 +3,7 @@ import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { AES, enc } from "crypto-ts";
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: "app-new-account",
@@ -15,17 +16,20 @@ export class NewAccountComponent {
   checkoutForm;
   valorEncriptacion = 10; //puede ser cualquier numero
   key = "millave"; //No debe tener espacios
-
+  userData;
   constructor(
     private modalService: BsModalService,
     private db: AngularFirestore,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) {
     this.checkoutForm = this.formBuilder.group({
       provider: "",
       email: "",
       password: ""
     });
+    this.userData= this.authService.test();
+    console.log(this.userData.id)
   }
   
 
@@ -42,7 +46,7 @@ export class NewAccountComponent {
         email: AES.encrypt(value.email, this.key).toString(),
         password: AES.encrypt(value.password, this.key).toString(),
         provider: value.provider,
-        users_email_id: "Ox2uBGY5rT3B3ErWbi1c"
+        users_email_id: this.userData.id
       });
       this.checkoutForm.reset();
 
