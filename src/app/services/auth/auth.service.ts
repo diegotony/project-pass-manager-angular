@@ -16,13 +16,13 @@ export class AuthService {
 
   loginGoogle() {
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
-    .then((credential)=> {
-      console.log(credential.user);
-      this.updateUserData(credential.user);
-    })
+      .then((credential) => {
+        console.log(credential.user);
+        this.updateUserData(credential.user);
+      })
   }
 
-  loginLinkEmail(){
+  loginLinkEmail() {
 
   }
 
