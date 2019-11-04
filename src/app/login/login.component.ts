@@ -13,12 +13,20 @@ export class LoginComponent implements OnInit {
   constructor(public afAuth: AngularFireAuth, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+
+    this.authService.confirmSignIn().then(() => {
+      this.onredirect();
+    }).catch(err => console.log('err auth confirmSingIn: ', err.message));
   }
 
   onloginGoogle() {
     this.authService.loginGoogle().then((res) => {
       this.onredirect();
     }).catch(err => console.log('err :D', err.message));
+  }
+
+  onloginEmail() {
+    this.authService.loginLinkEmail(this.email).catch(err => console.log('err :D', err.message));
   }
 
   onredirect() {
