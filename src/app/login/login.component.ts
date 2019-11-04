@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
   }
 
   onloginEmail() {
+    console.log("entre");
+    
     this.authService.loginLinkEmail(this.email).catch(err => console.log('err :D', err.message));
   }
 
