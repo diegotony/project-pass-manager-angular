@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { AngularFireAuth } from "@angular/fire/auth";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -8,7 +9,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 })
 export class NavbarComponent implements OnInit {
   public isLogged: boolean = false;
-  constructor(private authService: AuthService, private afsAuth: AngularFireAuth) { }
+  constructor(private authService: AuthService, private afsAuth: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {
     this.getCurrentAccount();
@@ -25,11 +26,12 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
-  
+
   test1(){
     this.authService.test();
   }
   onlogout() {
     this.authService.logout();
+    this.router.navigate(['/']);
   }
 }
