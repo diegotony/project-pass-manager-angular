@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase:{
+  firebase: {
     apiKey: "AIzaSyCFwHLTBad93z9MhH_zAASm8MHCGsjPNQI",
     authDomain: "key-manager-angular.firebaseapp.com",
     databaseURL: "https://key-manager-angular.firebaseio.com",
@@ -14,6 +14,12 @@ export const environment = {
     appId: "1:396094145609:web:19e2007418de71820a6b98",
     measurementId: "G-ZYRYVZGXJ7"
   }
+};
+
+export const actionCodeSettings = {
+  // Your redirect URL
+  url: 'https://localhost:4200/login', 
+  handleCodeInApp: true,
 };
 
 

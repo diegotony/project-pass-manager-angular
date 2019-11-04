@@ -1,23 +1,13 @@
 <ul class="list-group">
 
-  <li class="list-group-item" *ngFor="let item of accounts | async" >
-      {{item | json}}
- 
-    <button
-      type="button"
-      class="btn btn-warning"
-      data-toggle="modal"
-      data-target="#exampleModal"
-    >
+  <li class="list-group-item" *ngFor="let item of accounts | async">
+    {{item | json}}
+
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
       Edit
     </button>
-    <button
-      type="button"
-      class="btn btn-danger"
-      data-toggle="modal"
-      data-target="#exampleModal"
-      (click)="deleteAccount(item.id)"
-    >
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+      (click)="deleteAccount(item.id)">
       Delete
     </button>
   </li>

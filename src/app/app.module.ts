@@ -21,6 +21,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AngularFirestore],
+  providers: [AngularFirestore, AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
