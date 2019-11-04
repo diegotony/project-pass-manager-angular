@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AES, enc } from "crypto-ts";
 import { AngularFirestore } from "@angular/fire/firestore";
 import "rxjs/add/operator/map";
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: "app-list-accounts",
@@ -16,11 +17,13 @@ export class ListAccountsComponent implements OnInit {
   modalRef: BsModalRef;
   checkoutForm;
   key = "millave"; //No debe tener espacios
+  userData;
 
   constructor(
     private db: AngularFirestore,
     private modalService: BsModalService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService : AuthService
     
   ) {
 
@@ -32,12 +35,15 @@ export class ListAccountsComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.userData= this.authService.test();
+    console.log(this.userData.id)
     this.getAccounts();
   }
 
   getAccounts() {
+    this.authService.test();
     this.accounts = this.db
-      .collection("accounts")
+      .collection("accounts", ref =>  ref.where('users_email_id','==',this.userData.id))
       .snapshotChanges()
       .map(actions => {
         return actions.map(a => {
@@ -66,7 +72,7 @@ export class ListAccountsComponent implements OnInit {
         email: AES.encrypt(value.email, this.key).toString(),
         password: AES.encrypt(value.password, this.key).toString(),
         provider: value.provider,
-        users_email_id: "Ox2uBGY5rT3B3ErWbi1c"
+        users_email_id: this.userData.id
       });
       this.checkoutForm.reset();
 
