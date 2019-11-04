@@ -1,6 +1,8 @@
-<button type="button" class="btn btn-primary" (click)="openModal(template)">
-  Add Account
-</button>
+<section class="container container-account">
+    <button type="button" class="btn btn-primary" (click)="openModal(template)">
+        Add Account
+      </button>
+</section>
 
 <ng-template #template>
   <div class="modal-header">
@@ -19,27 +21,27 @@
       [formGroup]="checkoutForm"
       (ngSubmit)="saveAccount(checkoutForm.value)"
     >
-      <div>
+      <div class="form-group">
         <label for="provider">
           Provider
         </label>
-        <input id="provider" type="text" formControlName="provider" required />
+        <input id="provider" type="text" formControlName="provider" required class="form-control" />
       </div>
-      <div>
+      <div class="form-group">
         <label for="email">
           Email
         </label>
-        <input id="email" type="text" formControlName="email" required />
+        <input id="email" type="text" formControlName="email" required class="form-control" />
       </div>
 
-      <div>
+      <div class="form-group">
         <label for="password">
           Password
         </label>
-        <input id="password" type="text" formControlName="password" required />
+        <input id="password" type="text" formControlName="password" required class="form-control" />
       </div>
 
-      <button class="button" type="submit">Agregar</button>
+      <button class="btn btn-primary" type="submit">Agregar</button>
     </form>
   </div>
 </ng-template>

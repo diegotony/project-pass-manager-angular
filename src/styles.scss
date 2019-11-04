@@ -1,8 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
+html,
+body {
     height: 93% !important;
 }
 
 * {
     font-family: Helvetica, sans-serif;
+}
+
+.btn-danger {
+  
+    background-color: #E04A4A;
+}
+
+.btn-primary {
+    background-color: #25364F;
 }
