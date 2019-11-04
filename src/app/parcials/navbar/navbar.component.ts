@@ -18,10 +18,8 @@ export class NavbarComponent implements OnInit {
   private getCurrentAccount() {
     this.authService.isAuth().subscribe(auth => {
       if (auth) {
-
         this.isLogged = true;
       } else {
-
         this.isLogged = false;
       }
     });
@@ -32,6 +30,6 @@ export class NavbarComponent implements OnInit {
   }
   onlogout() {
     this.authService.logout();
-    this.router.navigate(['/']);
+    this.getCurrentAccount();
   }
 }
