@@ -1,2 +1,3 @@
 # key-manager-angular
-App using Angular 7 and Firebase
+PWA to manage passwords with Angular 7 and Firebase
+
